@@ -1,17 +1,81 @@
 import axios from 'axios';
 
-export const fetchMovies = async () => {
-  const API_KEY = 'e4624f9b78ee3bac020d603dacbf8ced';
-  const BASE_URL = 'https://api.themoviedb.org/3/movie/550?';
-  // const TRANDING = 'trending/movie/';
+// const API_KEY = 'e4624f9b78ee3bac020d603dacbf8ced';
 
-  //api.themoviedb.org/3/trending/movie/day?language=en-US
-  //api.themoviedb.org/3/?api_key=e4624f9b78ee3bac020d603dacbf8cedtrending/movie/{time_window} 404
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+axios.defaults.params = {
+  api_key: 'e4624f9b78ee3bac020d603dacbf8ced',
+  language: 'en-US',
+};
+
+const END_POINTS = {
+  TRANDING: 'trending/movie/week',
+  SEARCH_MOVIE: 'search/movie',
+  MOVIE_BY_ID: 'movie/',
+  CASTS: '/credits',
+  REVIEWS: '/reviews',
+};
+
+export const fetchTrandingMovies = async () => {
+  const { TRANDING } = END_POINTS;
 
   try {
-    const response = await axios.get(`${BASE_URL}api_key=${API_KEY}`);
-   
+    const response = await axios(`${TRANDING}?`);
+
     console.log(response.data);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchMovieByQuery = async () => {
+  const { SEARCH_MOVIE } = END_POINTS;
+
+  try {
+    const response = await axios(`${SEARCH_MOVIE}`);
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchMovieById = async id => {
+  const { MOVIE_BY_ID } = END_POINTS;
+
+  try {
+    const response = await axios(`${MOVIE_BY_ID}${id}`);
+
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCasts = async id => {
+  const { MOVIE_BY_ID, CASTS } = END_POINTS;
+
+  try {
+    const response = await axios(`${MOVIE_BY_ID}${id}${CASTS}`);
+
+    // org / 3 / movie / { movie_id } / credits;
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchReviews = async id => {
+  const { MOVIE_BY_ID, REVIEWS } = END_POINTS;
+
+  try {
+    const response = await axios(`${MOVIE_BY_ID}${id}${REVIEWS}`);
+
+    console.log(response);
     return response;
   } catch (error) {
     console.log(error);
@@ -39,8 +103,6 @@ export const fetchMovies = async () => {
 // https://api.themoviedb.org/3/movie/550/?api_key=e4624f9b78ee3bac020d603dacbf8ced
 // Status Code:
 // 404
-
-// https://api.themoviedb.org/3/api_key=e4624f9b78ee3bac020d603dacbf8ced
 
 // https://api.themoviedb.org/3/movie/550?api_key=e4624f9b78ee3bac020d603dacbf8ced
 // Status Code:
