@@ -1,27 +1,16 @@
 import axios from 'axios';
 
 export const fetchMovies = async () => {
-	const today = new Date();
-	const currentDate = toString(today);
-	console.log(today)
   const API_KEY = 'e4624f9b78ee3bac020d603dacbf8ced';
-  const BASE_URL = 'https://api.themoviedb.org/3/';
-  const TRANDING = 'trending/movie/';
-
-  // const BASE_FETCH_OPTIONS =
-  //   'image_type=photo&orientation=horizontal&safesearch=true&per_page=12';
-  // const instance = axios.create({
-  //   baseURL: BASE_URL,
-  // });
+  const BASE_URL = 'https://api.themoviedb.org/3/movie/550?';
+  // const TRANDING = 'trending/movie/';
 
   //api.themoviedb.org/3/trending/movie/day?language=en-US
   //api.themoviedb.org/3/?api_key=e4624f9b78ee3bac020d603dacbf8cedtrending/movie/{time_window} 404
 
-  https: try {
-    const response = await axios.get(`${BASE_URL}${TRANDING}${currentDate}`);
-    // if (response.data.hits.length === 0) {
-    //   alert('Please enter a valid search query');
-    // }
+  try {
+    const response = await axios.get(`${BASE_URL}api_key=${API_KEY}`);
+   
     console.log(response.data);
     return response;
   } catch (error) {
@@ -50,6 +39,8 @@ export const fetchMovies = async () => {
 // https://api.themoviedb.org/3/movie/550/?api_key=e4624f9b78ee3bac020d603dacbf8ced
 // Status Code:
 // 404
+
+// https://api.themoviedb.org/3/api_key=e4624f9b78ee3bac020d603dacbf8ced
 
 // https://api.themoviedb.org/3/movie/550?api_key=e4624f9b78ee3bac020d603dacbf8ced
 // Status Code:
