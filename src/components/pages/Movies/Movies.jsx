@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 // import { Routes, Route, NavLink } from "react-router-dom";
-import { fetchMovieByQuery } from "components/Api/fetchMovies";
+// import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 export const Movies = () => {
@@ -42,6 +42,7 @@ export const Movies = () => {
 					name="searchQuery"
 				/>
 			</form>
+
 		</Wrapper>
 	);
 }

@@ -5,7 +5,7 @@ export const Navigation = () => {
 	return (
 		<>
 			<nav className={css.Navigation}>
-				<NavLink className={css.Navigation__link} to="/" end>Home</NavLink>
+				<NavLink className={css.Navigation__link} to="/">Home</NavLink>
 				<NavLink className={css.Navigation__link} to="search/movie">Movies</NavLink>
 			</nav>
 		</>

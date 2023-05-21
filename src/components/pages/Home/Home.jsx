@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 // import { Routes, Route, NavLink } from "react-router-dom";
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
 // import { Wrapper } from "components/Wrapper/Wrapper";
@@ -11,6 +12,7 @@ export const Home = () => {
 		fetchTrandingMovies().then(response => {
 			const { data: { results } } = response
 			setMovies(results)
+			console.log(results)
 		})
 	}, [])
 
@@ -20,7 +22,9 @@ export const Home = () => {
 			<ul>
 				{movies.map(({ id, title }) =>
 				(<li key={id}>
-					<p>{title}</p>
+					<Link to={'google.com'}>
+						{title}
+					</Link>
 				</li>)
 				)
 				}
@@ -32,3 +36,6 @@ export const Home = () => {
 Home.propTypes = {
 	movies: PropTypes.array,
 }
+
+
+	// < Link to = {`${id}`}>
