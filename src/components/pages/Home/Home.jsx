@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 // import { Link } from 'react-dom';
+// import { Routes, Route } from "react-router-dom";
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 
