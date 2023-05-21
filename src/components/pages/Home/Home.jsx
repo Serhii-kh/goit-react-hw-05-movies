@@ -30,5 +30,5 @@ export const Home = () => {
 }
 
 Home.propTypes = {
-	movies: PropTypes.array.isRequired,
+	movies: PropTypes.array,
 }
