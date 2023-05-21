@@ -8,7 +8,7 @@ axios.defaults.params = {
   language: 'en-US',
 };
 
-const END_POINTS = {
+export const END_POINTS = {
   TRANDING: 'trending/movie/week',
   SEARCH_MOVIE: 'search/movie',
   MOVIE_BY_ID: 'movie/',

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-// import { Link } from 'react-dom';
-// import { Routes, Route } from "react-router-dom";
+// import { Routes, Route, NavLink } from "react-router-dom";
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
-import { Wrapper } from "components/Wrapper/Wrapper";
+// import { Wrapper } from "components/Wrapper/Wrapper";
+import PropTypes from 'prop-types';
 
 export const Home = () => {
 	const [movies, setMovies] = useState([])
@@ -15,7 +15,7 @@ export const Home = () => {
 	}, [])
 
 	return (
-		<Wrapper>
+		<>
 			<h1>In Trand</h1>
 			<ul>
 				{movies.map(({ id, title }) =>
@@ -25,7 +25,10 @@ export const Home = () => {
 				)
 				}
 			</ul>
-		</Wrapper>
+		</>
 	)
 }
 
+Home.propTypes = {
+	movies: PropTypes.array.isRequired,
+}
