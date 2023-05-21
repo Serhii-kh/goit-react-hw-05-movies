@@ -17,9 +17,10 @@ export const Movies = () => {
 		e.preventDefault();
 
 		if (searchQuery.trim() === '') {
-			alert('Please enter your search query');
+			alert('Please, enter your search query!');
 			return;
 		}
+
 		// handlerFormSubmit(searchQuery);
 	};
 
