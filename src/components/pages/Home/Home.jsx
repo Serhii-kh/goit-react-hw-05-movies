@@ -1,17 +1,30 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+// import { Link } from 'react-dom';
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
-import { fetchMovieByQuery } from "components/Api/fetchMovies";
-import { fetchMovieById } from "components/Api/fetchMovies";
-import { fetchCasts } from "components/Api/fetchMovies";
-import { fetchReviews } from "components/Api/fetchMovies";
+import { Wrapper } from "components/Wrapper/Wrapper";
 
 export const Home = () => {
+	const [movies, setMovies] = useState([])
+
 	useEffect(() => {
-		// fetchTrandingMovies()
-		// fetchMovieByQuery()
-		// fetchMovieById(840326)
-		// fetchCasts(840326)
-		fetchReviews(502356)
+		fetchTrandingMovies().then(response => {
+			const { data: { results } } = response
+			setMovies(results)
+		})
 	}, [])
+
+	return (
+		<Wrapper>
+			<h1>In Trand</h1>
+			<ul>
+				{movies.map(({ id, title }) =>
+				(<li key={id}>
+					<p>{title}</p>
+				</li>)
+				)
+				}
+			</ul>
+		</Wrapper>
+	)
 }
 

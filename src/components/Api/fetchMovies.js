@@ -20,23 +20,15 @@ export const fetchTrandingMovies = async () => {
   const { TRANDING } = END_POINTS;
 
   try {
-    const response = await axios(`${TRANDING}?`);
-
-    console.log(response.data);
-    return response;
-  } catch (error) {
-    console.log(error);
-  }
+    return await axios(`${TRANDING}?`);
+  } catch (error) {}
 };
 
 export const fetchMovieByQuery = async () => {
   const { SEARCH_MOVIE } = END_POINTS;
 
   try {
-    const response = await axios(`${SEARCH_MOVIE}`);
-
-    console.log(response);
-    return response;
+    return await axios(`${SEARCH_MOVIE}`);
   } catch (error) {
     console.log(error);
   }
@@ -46,10 +38,7 @@ export const fetchMovieById = async id => {
   const { MOVIE_BY_ID } = END_POINTS;
 
   try {
-    const response = await axios(`${MOVIE_BY_ID}${id}`);
-
-    console.log(response);
-    return response;
+    return await axios(`${MOVIE_BY_ID}${id}`);
   } catch (error) {
     console.log(error);
   }
@@ -59,11 +48,7 @@ export const fetchCasts = async id => {
   const { MOVIE_BY_ID, CASTS } = END_POINTS;
 
   try {
-    const response = await axios(`${MOVIE_BY_ID}${id}${CASTS}`);
-
-    // org / 3 / movie / { movie_id } / credits;
-    console.log(response);
-    return response;
+    return await axios(`${MOVIE_BY_ID}${id}${CASTS}`);
   } catch (error) {
     console.log(error);
   }
@@ -73,10 +58,7 @@ export const fetchReviews = async id => {
   const { MOVIE_BY_ID, REVIEWS } = END_POINTS;
 
   try {
-    const response = await axios(`${MOVIE_BY_ID}${id}${REVIEWS}`);
-
-    console.log(response);
-    return response;
+    return await axios(`${MOVIE_BY_ID}${id}${REVIEWS}`);
   } catch (error) {
     console.log(error);
   }
