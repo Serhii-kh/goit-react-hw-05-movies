@@ -24,7 +24,7 @@ export const fetchTrandingMovies = async () => {
   } catch (error) {}
 };
 
-export const fetchMovieByQuery = async () => {
+export const fetchMovieByQuery = async (searchQuery) => {
   const { SEARCH_MOVIE } = END_POINTS;
 
   try {

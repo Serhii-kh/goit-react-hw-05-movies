@@ -1,8 +1,8 @@
-import { useState} from "react";
-// import { Routes, Route, NavLink } from "react-router-dom";
+import { useState } from "react";
 // import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
+// import { useParams } from "react-router-dom";
 // import PropTypes from 'prop-types';
 
 
@@ -21,8 +21,15 @@ export const Movies = () => {
 			return;
 		}
 
+		console.log('submit done!')
+
 		// handlerFormSubmit(searchQuery);
+		setSearchQuery('')
 	};
+
+	// useEffect(() => {
+	// 	fetchMovieByQuery(searchQuery)
+	// }, [searchQuery])
 
 
 	return (
