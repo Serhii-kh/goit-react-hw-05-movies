@@ -1,14 +1,12 @@
 import axios from 'axios';
 
-// const API_KEY = 'e4624f9b78ee3bac020d603dacbf8ced';
-
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 axios.defaults.params = {
   api_key: 'e4624f9b78ee3bac020d603dacbf8ced',
   language: 'en-US',
 };
 
-export const END_POINTS = {
+ const END_POINTS = {
   TRANDING: 'trending/movie/week',
   SEARCH_MOVIE: 'search/movie',
   MOVIE_BY_ID: 'movie/',
