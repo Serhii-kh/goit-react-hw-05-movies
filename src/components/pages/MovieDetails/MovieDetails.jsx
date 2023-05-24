@@ -1,46 +1,39 @@
-import { fetchMovieById } from "components/Api/fetchMovies"
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { fetchMovieById } from 'components/Api/fetchMovies';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 export const MovieDetails = () => {
-	const [movie, setMovie] = useState(null)
-	const { movieId } = useParams()
+  const [movie, setMovie] = useState(null);
+  const { movieId } = useParams();
 
-	useEffect(() => {
-		try {
-			fetchMovieById(movieId)
-				.then(data => {
-					setMovie(data)
-					console.log(movie)
-					console.log(data)
-				})
-		}
-		catch (error) {
-			console.log(error)
-		}
-		finally { }
+  useEffect(() => {
+    try {
+      fetchMovieById(movieId).then(data => {
+        setMovie(data.data.genres);
+        // console.log(movie);
+        console.log(data.data.genres);
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+    }
+  }, [movieId]);
 
-	}, [movieId])
+  const {
+    data: { original_title, overview, genres },
+  } = movie;
+  // console.log(genres)
 
-	const { original_title, overview, genres } = movie
-
-	const movieGenres = []
-
-	if (genres) {
-		for (const genre of genres) {
-			movieGenres.push(genre.name)
-		}
-	}
-
-	return (
-		<>
-
-			<div className="movieDetails">
-				<h1>{original_title}</h1>
-				<p>{movieGenres}</p>
-				<p>{overview}</p>
-
-			</div>
-		</>
-	)
-}
+  return (
+    <>
+      <div className="movieDetails">
+        <h1>{original_title}</h1>
+			  <ul>{genres.map((genre) => {
+			return <li><p>{genre}</p></li>
+		})}</ul>
+        <p>{overview}</p>
+        {/* <p>dsdsfdf</p> */}
+      </div>
+    </>
+  );
+};
