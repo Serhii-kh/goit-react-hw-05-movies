@@ -31,7 +31,7 @@ export const MovieDetails = () => {
 			  {/* <ul>{genres.map((genre) => {
 			return <li><p>{genre}</p></li>
 		})}</ul> */}
-        <p>{overview}</p>
+        {/* <p>{overview}</p> */}
         {/* <p>dsdsfdf</p> */}
       </div>
     </>
