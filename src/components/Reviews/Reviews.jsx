@@ -12,7 +12,7 @@ export const Reviews = () => {
 
 	}, [movieId])
 
-	console.log(reviews)
+	// console.log(reviews)
 
 	return (
 		<>
