@@ -18,7 +18,7 @@ export const MovieDetails = () => {
       console.log(error);
     } finally {
     }
-  }, [movieId]);
+  }, [movieId, movie]);
 
   // const {
   //   data: { original_title, overview, genres },
