@@ -19,20 +19,20 @@ export const MovieDetails = () => {
     }
   }, [movieId]);
 
-  const {
-    data: { original_title, overview, genres },
-  } = movie;
+  // const {
+  //   data: { original_title, overview, genres },
+  // } = movie;
   // console.log(genres)
 
   return (
     <>
       <div className="movieDetails">
-        <h1>{original_title}</h1>
-			  {/* <ul>{genres.map((genre) => {
+        {/* <h1>{original_title}</h1> */}
+        {/* <ul>{genres.map((genre) => {
 			return <li><p>{genre}</p></li>
 		})}</ul> */}
         {/* <p>{overview}</p> */}
-        {/* <p>dsdsfdf</p> */}
+        <p>dsdsfdf</p>
       </div>
     </>
   );
