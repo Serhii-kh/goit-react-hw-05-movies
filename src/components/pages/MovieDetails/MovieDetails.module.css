@@ -1,0 +1,11 @@
+.movieDetails {
+	/* display: flex; */
+
+	padding: 5px;
+	margin: 5px;
+}
+
+.additional_information {
+	padding: 5px;
+	margin: 5px;
+}
