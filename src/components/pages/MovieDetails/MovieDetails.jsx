@@ -9,8 +9,9 @@ export const MovieDetails = () => {
   useEffect(() => {
     try {
       fetchMovieById(movieId).then(data => {
-        setMovie(data.data.genres);
+        setMovie(movie);
         // console.log(movie);
+        // data.data.genres;
         console.log(data.data.genres);
       });
     } catch (error) {
