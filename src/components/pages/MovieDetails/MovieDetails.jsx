@@ -20,7 +20,7 @@ export const MovieDetails = () => {
 		}
 	}, [movieId]);
 
-	console.log(movie)
+	// console.log(movie)
 
 	return (
 

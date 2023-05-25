@@ -29,7 +29,11 @@ export const Reviews = () => {
 				}
 			</ul>)}
 
-			{/* <p>reviews</p> */}
+			{reviews.length === 0 && <div>
+				<p>
+					Sory, but we haven`t any review for this movie...
+			</p>
+			</div>}
 			
 
 		</>

@@ -12,7 +12,7 @@ export const Casts = () => {
 
 	}, [movieId])
 
-	console.log(casts)
+	// console.log(casts)
 
 	return (
 		<>

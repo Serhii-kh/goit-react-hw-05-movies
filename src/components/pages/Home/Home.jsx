@@ -12,7 +12,7 @@ export const Home = () => {
 		fetchTrandingMovies().then(response => {
 			const { data: { results } } = response
 			setMovies(results)
-			console.log(results)
+			// console.log(results)
 		})
 	}, [])
 

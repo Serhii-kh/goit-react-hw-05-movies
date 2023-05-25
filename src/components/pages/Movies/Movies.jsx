@@ -1,5 +1,5 @@
-import { useState } from "react";
-// import { fetchMovieByQuery } from "components/Api/fetchMovies";
+import { useState, useEffect } from "react";
+import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
 // import { useParams } from "react-router-dom";
@@ -27,9 +27,9 @@ export const Movies = () => {
 		setSearchQuery('')
 	};
 
-	// useEffect(() => {
-	// 	fetchMovieByQuery(searchQuery)
-	// }, [searchQuery])
+	useEffect(() => {
+		fetchMovieByQuery(searchQuery)
+	}, [searchQuery])
 
 
 	return (
