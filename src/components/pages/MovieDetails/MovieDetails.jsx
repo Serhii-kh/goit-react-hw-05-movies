@@ -1,6 +1,6 @@
 import { fetchMovieById } from 'components/Api/fetchMovies';
-import { useEffect, useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from '../MovieDetails/MovieDetails.module.css';
 
 export const MovieDetails = () => {
@@ -20,9 +20,13 @@ export const MovieDetails = () => {
 
   // console.log(movie)
 
+	const location = useLocation()
+	const backLinkLocationRef = useRef(location.state?.from ?? '/')
+
   return (
     movie && (
-      <>
+			<>
+				<Link to={backLinkLocationRef.current}>Go back</Link>
         <div className={css.movieDetails}>
           <img
             src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}

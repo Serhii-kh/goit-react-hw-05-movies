@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import { Routes, Route, NavLink } from "react-router-dom";
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
 // import { Wrapper } from "components/Wrapper/Wrapper";
@@ -16,13 +16,15 @@ export const Home = () => {
 		})
 	}, [])
 
+	const location = useLocation()
+
 	return (
 		<>
 			<h1>In Trand</h1>
 			<ul>
 				{movies.map(({ id, title }) =>
 				(<li key={id}>
-					<Link to={`movie/${id}`}>
+					<Link to={`movie/${id}`} state={{from: location}}>
 						{title}
 					</Link>
 				</li>)
