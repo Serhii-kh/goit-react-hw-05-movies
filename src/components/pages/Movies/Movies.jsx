@@ -23,6 +23,8 @@ export const Movies = () => {
 
 		console.log('submit done!')
 
+		fetchMovieByQuery(searchQuery)
+
 		// handlerFormSubmit(searchQuery);
 		setSearchQuery('')
 	};
