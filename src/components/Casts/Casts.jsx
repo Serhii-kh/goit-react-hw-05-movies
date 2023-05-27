@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import css from '../Casts/Casts.module.css'
 
 export const Casts = () => {
-	const [casts, setCasts] = useState(null)
+	const [casts, setCasts] = useState([])
 	const { movieId } = useParams()
 
 	useEffect(() => {
@@ -28,6 +28,11 @@ export const Casts = () => {
 					</li>))
 				}
 			</ul>}
+			{casts.length === 0 && <div>
+				<p>
+					Sory, but we haven`t info about casts for this movie...
+				</p>
+			</div>}
 		</>
 	)
 

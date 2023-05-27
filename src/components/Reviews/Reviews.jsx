@@ -28,18 +28,11 @@ export const Reviews = () => {
 					
 				}
 			</ul>)}
-
 			{reviews.length === 0 && <div>
 				<p>
 					Sory, but we haven`t any review for this movie...
 			</p>
 			</div>}
-			
-
 		</>
-
-
-
 	)
-
 }

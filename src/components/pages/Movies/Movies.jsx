@@ -1,9 +1,8 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
 import { Link, useLocation, useSearchParams } from "react-router-dom";
-// import {Home} from '../Home/Home'
 // import PropTypes from 'prop-types';
 
 
@@ -21,14 +20,15 @@ export const Movies = () => {
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		// searchParams?.get('query')?.trim() === '' ?? alert('Please, enter your search query!');		
+		if (searchQuery === '') {
+			alert('Please, enter your search movie name!')
+			return
+		}
 
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 			setMovies(results)
 		})
-
-		// setSearchParams({})
 	};
 
 	return (
@@ -39,7 +39,7 @@ export const Movies = () => {
 				</button>
 				<input
 					className={css.SearchForm__input}
-					value={searchQuery? searchQuery : ''}
+					value={searchQuery ? searchQuery : ''}
 					onChange={handleChange}
 					type="text"
 					autoComplete="off"
@@ -63,6 +63,3 @@ export const Movies = () => {
 	);
 }
 
-// Movies.PropTypes = {
-// 	handlerFormSubmit: PropTypes.func.isRequired,
-// }

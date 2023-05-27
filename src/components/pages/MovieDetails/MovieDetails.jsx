@@ -18,8 +18,6 @@ export const MovieDetails = () => {
 		}
 	}, [movieId]);
 
-	// console.log(movie)
-
 	const location = useLocation()
 	const backLinkLocationRef = useRef(location.state?.from ?? '/')
 
