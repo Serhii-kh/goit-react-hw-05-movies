@@ -7,14 +7,13 @@ import css from '../Movies/Movies.module.css'
 export const Movies = () => {
 	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
-	const [query, setQuery] = useState('')
+	// const [query, setQuery] = useState('')
 	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
-	const handleChange = e => {
-		const { value } = e.target;
+	const handleChange = ({ target: { value } }) => {
 		setSearchParams({ query: [value] })
-		setQuery(value)
+		// setQuery(value)
 	}
 
 	const handleSubmit = e => {
@@ -25,20 +24,22 @@ export const Movies = () => {
 			return
 		}
 
-		// fetchMovieByQuery(searchQuery).then(response => {
-		// 	const { data: { results } } = response
-		// 	setMovies(results)
-		// })
-	};
-
-	useEffect(() => {
-		if (!searchQuery) return
-
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 			setMovies(results)
+
+			if (results.length === 0) alert('Тo results for your search :(')
 		})
-	}, [searchQuery])
+	};
+
+	// useEffect(() => {
+	// 	if (!searchQuery) return
+
+	// 	fetchMovieByQuery(searchQuery).then(response => {
+	// 		const { data: { results } } = response
+	// 		setMovies(results)
+	// 	})
+	// }, [searchQuery])
 
 	return (
 		<Wrapper>

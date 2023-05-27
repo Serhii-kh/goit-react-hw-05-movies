@@ -5,6 +5,7 @@ import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
 import { Layout } from "./Layout/Layout";
 import { Casts } from "./Casts/Casts";
 import { Reviews } from "./Reviews/Reviews";
+import { NotFound } from "./pages/NotFound/NotFound";
 // import PropTypes from 'prop-types';
 
 
@@ -23,6 +24,7 @@ export const App = () => {
 					</Route>
 					<Route path="movie" element={<Movies />} />
 				</Route>
+				<Route path="*" element={ <NotFound />} />
 			</Routes>
 		</>
 	);
