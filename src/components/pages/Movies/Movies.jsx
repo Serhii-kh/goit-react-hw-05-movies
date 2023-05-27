@@ -1,37 +1,42 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
-// import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 // import PropTypes from 'prop-types';
 
 
 export const Movies = () => {
-	const [searchQuery, setSearchQuery] = useState('')
+	const [searchParams, setSearchParams] = useSearchParams()
+	const searchQuery = searchParams.get('query')
 
-	const handleChange = ({ target: { value } }) => {
-		setSearchQuery(value);
+	const handleChange = e => {
+		const { value } = e.target;
+		setSearchParams({ query: [value] })
+		// console.log(value)
+		// console.log(searchParams)	
+		console.log(searchParams)
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if (searchQuery.trim() === '') {
+		if (searchParams.get('query').trim() === '') {
 			alert('Please, enter your search query!');
 			return;
 		}
 
 		console.log('submit done!')
 
-		fetchMovieByQuery(searchQuery)
+		fetchMovieByQuery(searchQuery).then(r => console.log(r))
 
 		// handlerFormSubmit(searchQuery);
-		setSearchQuery('')
+		// setSearchQuery('')
 	};
 
-	useEffect(() => {
-		fetchMovieByQuery(searchQuery)
-	}, [searchQuery])
+	// useEffect(() => {
+	// 	fetchMovieByQuery(searchQuery)
+	// }, [searchQuery])
 
 
 	return (
@@ -42,7 +47,7 @@ export const Movies = () => {
 				</button>
 				<input
 					className={css.SearchForm__input}
-					value={searchQuery}
+					// value={searchParams}
 					onChange={handleChange}
 					type="text"
 					autoComplete="off"

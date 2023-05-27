@@ -23,10 +23,10 @@ export const fetchTrandingMovies = async () => {
 };
 
 export const fetchMovieByQuery = async (query) => {
-  const { SEARCH_MOVIE } = END_POINTS;
+	const { SEARCH_MOVIE } = END_POINTS;
 
   try {
-    return await axios(`${SEARCH_MOVIE}`);
+    return await axios(`${SEARCH_MOVIE}?query=${query}`);
   } catch (error) {
     console.log(error);
   }
