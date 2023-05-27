@@ -6,13 +6,9 @@ import { Layout } from "./Layout/Layout";
 import { Casts } from "./Casts/Casts";
 import { Reviews } from "./Reviews/Reviews";
 import { NotFound } from "./pages/NotFound/NotFound";
-// import PropTypes from 'prop-types';
 
 
 export const App = () => {
-
-
-
 	return (
 		<>
 			<Routes>
@@ -24,13 +20,8 @@ export const App = () => {
 					</Route>
 					<Route path="movie" element={<Movies />} />
 				</Route>
-				<Route path="*" element={ <NotFound />} />
+				<Route path="*" element={<NotFound />} />
 			</Routes>
 		</>
 	);
 };
-
-
-
-			// <NavLink className={css.Navigation__link} to="/" end>Home</NavLink>
-			// <NavLink className={css.Navigation__link} to="search/movie">Movies</NavLink>

@@ -7,19 +7,19 @@ import css from '../Movies/Movies.module.css'
 export const Movies = () => {
 	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
-	// const [query, setQuery] = useState('')
 	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
 	const handleChange = ({ target: { value } }) => {
-		setSearchParams({ query: [value] })
-		// setQuery(value)
+		// setSearchParams({ query: [value] })
+
+		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] })
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if (searchQuery === '') {
+		if (searchQuery === '' || !searchQuery) {
 			alert('Please, enter your search movie name!')
 			return
 		}
