@@ -9,7 +9,7 @@ export const Navigation = () => {
 			<header>
 				<nav className={css.Navigation}>
 					<NavLink to="/" className={setActive}>Home</NavLink>
-					<NavLink to="search/movie" className={setActive}>Movies</NavLink>
+					<NavLink to="movie" className={setActive}>Movies</NavLink>
 				</nav>
 			</header>
 		</>

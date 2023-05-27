@@ -1,43 +1,35 @@
-import { useEffect } from "react";
+import {  useState } from "react";
 import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
-import { useSearchParams } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
+// import {Home} from '../Home/Home'
 // import PropTypes from 'prop-types';
 
 
 export const Movies = () => {
+	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
+	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
 	const handleChange = e => {
 		const { value } = e.target;
 		setSearchParams({ query: [value] })
-		// console.log(value)
-		// console.log(searchParams)	
-		console.log(searchParams)
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
 
-		if (searchParams.get('query').trim() === '') {
-			alert('Please, enter your search query!');
-			return;
-		}
+		// searchParams?.get('query')?.trim() === '' ?? alert('Please, enter your search query!');		
 
-		console.log('submit done!')
+		fetchMovieByQuery(searchQuery).then(response => {
+			const { data: { results } } = response
+			setMovies(results)
+		})
 
-		fetchMovieByQuery(searchQuery).then(r => console.log(r))
-
-		// handlerFormSubmit(searchQuery);
-		// setSearchQuery('')
+		// setSearchParams({})
 	};
-
-	// useEffect(() => {
-	// 	fetchMovieByQuery(searchQuery)
-	// }, [searchQuery])
-
 
 	return (
 		<Wrapper>
@@ -47,7 +39,7 @@ export const Movies = () => {
 				</button>
 				<input
 					className={css.SearchForm__input}
-					// value={searchParams}
+					value={searchQuery? searchQuery : ''}
 					onChange={handleChange}
 					type="text"
 					autoComplete="off"
@@ -57,6 +49,16 @@ export const Movies = () => {
 				/>
 			</form>
 
+			<ul>
+				{movies.map(({ id, title }) =>
+				(<li key={id}>
+					<Link to={`${id}`} state={{ from: location }}>
+						{title}
+					</Link>
+				</li>)
+				)
+				}
+			</ul>
 		</Wrapper>
 	);
 }
