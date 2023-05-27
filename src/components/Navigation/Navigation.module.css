@@ -8,3 +8,7 @@
 .Navigation__link .active {
 	color: red;
 }
+
+header {
+	margin-bottom: 15px;
+}

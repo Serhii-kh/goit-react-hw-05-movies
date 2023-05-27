@@ -2,11 +2,25 @@
 	/* display: flex; */
 
 	padding: 5px;
-	margin: 5px;
+	margin: 10px;
 }
 
 .additional_information {
 display: flex;
 flex-direction: column;
 gap: 10px;
+}
+
+.goBack {
+	padding: 5px;
+	text-decoration: none;
+	outline: 1px solid black;
+
+	border-radius: 4px;
+}
+
+.goBack:hover {
+	background-color:rgb(196, 246, 246);
+
+	outline: 1px solid black;
 }
