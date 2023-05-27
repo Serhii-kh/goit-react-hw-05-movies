@@ -21,6 +21,4 @@ gap: 10px;
 
 .goBack:hover {
 	background-color:rgb(196, 246, 246);
-
-	outline: 1px solid black;
 }
