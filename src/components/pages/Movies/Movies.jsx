@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
-import { Link, useLocation, useSearchParams } from "react-router-dom";
-// import PropTypes from 'prop-types';
-
 
 export const Movies = () => {
 	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
+	const [query, setQuery] = useState('')
 	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
 	const handleChange = e => {
 		const { value } = e.target;
 		setSearchParams({ query: [value] })
+		setQuery(value)
 	}
 
 	const handleSubmit = e => {
@@ -25,11 +25,20 @@ export const Movies = () => {
 			return
 		}
 
+		// fetchMovieByQuery(searchQuery).then(response => {
+		// 	const { data: { results } } = response
+		// 	setMovies(results)
+		// })
+	};
+
+	useEffect(() => {
+		if (!searchQuery) return
+
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 			setMovies(results)
 		})
-	};
+	}, [searchQuery])
 
 	return (
 		<Wrapper>
@@ -48,8 +57,7 @@ export const Movies = () => {
 					name="searchQuery"
 				/>
 			</form>
-
-			<ul>
+			{movies && <ul>
 				{movies.map(({ id, title }) =>
 				(<li key={id}>
 					<Link to={`${id}`} state={{ from: location }}>
@@ -58,7 +66,8 @@ export const Movies = () => {
 				</li>)
 				)
 				}
-			</ul>
+			</ul>}
+
 		</Wrapper>
 	);
 }
