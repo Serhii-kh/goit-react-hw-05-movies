@@ -10,7 +10,6 @@ const Movies = () => {
 	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
-
 	const handleChange = ({ target: { value } }) => {
 		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] });
 	}
@@ -27,28 +26,24 @@ const Movies = () => {
 			const { data: { results } } = response
 
 			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
-			console.log('фетч при сабмите')
-		})
 
+			localStorage.setItem('movies', JSON.stringify(results))
+		})
 	};
 
 	useEffect(() => {
-		if (searchQuery === "" || !searchQuery) { return }
+		const parsedMovies = JSON.parse(localStorage.getItem('movies'))
 
-		fetchMovieByQuery(searchQuery).then(response => {
-			const { data: { results } } = response
-			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
-			console.log('first')
-		})
-	}, [searchQuery])
+		if (parsedMovies) {
+			setMovies(parsedMovies)
+		}
+		localStorage.removeItem('movies')
 
-		//  const fetch = () => { return fetchMovieByQuery(searchQuery).then(response => {
-		// 	const { data: { results } } = response
-		// 	results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
-		// 	console.log("фетч без сабмита")
-		// })}
+		return () => {
+			console.log(`Unmounting component Movies`)
+		}
+	}, [])
 
-	
 
 	return (
 		<Wrapper>

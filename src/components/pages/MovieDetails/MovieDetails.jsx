@@ -6,6 +6,8 @@ import css from '../MovieDetails/MovieDetails.module.css';
 const MovieDetails = () => {
 	const [movie, setMovie] = useState(null);
 	const { movieId } = useParams();
+	const location = useLocation()
+	const backLinkLocationRef = useRef(location.state?.from ?? '/')
 
 	useEffect(() => {
 		try {
@@ -18,9 +20,7 @@ const MovieDetails = () => {
 		}
 	}, [movieId]);
 
-	const location = useLocation()
-	const backLinkLocationRef = useRef(location.state?.from ?? '/')
-
+	
 	return (
 		movie && (
 			<>
