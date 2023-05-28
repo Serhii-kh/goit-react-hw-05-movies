@@ -36,7 +36,7 @@ const Movies = () => {
 			const { data: { results } } = response
 			setMovies(results)
 		})
-	}, [])
+	}, [searchQuery])
 
 	return (
 		<Wrapper>
