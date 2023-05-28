@@ -26,19 +26,20 @@ const Movies = () => {
 			const { data: { results } } = response
 
 			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
+
 		})
+
 	};
 
 	useEffect(() => {
-		if (searchQuery === '' || !searchQuery) return
+		if (searchQuery === "" || !searchQuery) { return }
 
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
-			setMovies(results)
-		}, [searchQuery])
-
-		console.log('adadadd')
-	})
+			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
+			console.log('first')
+		})
+	}, [])
 
 	return (
 		<Wrapper>
