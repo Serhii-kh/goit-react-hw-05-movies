@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useSearchParams } from "react-router-dom";
 import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
@@ -8,14 +8,16 @@ const Movies = () => {
 	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
 	const location = useLocation()
+	const submitted = useRef(false)
 	const searchQuery = searchParams.get('query')
 
 	const handleChange = ({ target: { value } }) => {
-		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] })
+		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] });
 	}
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		submitted.current = true
 
 		if (searchQuery === '' || !searchQuery) {
 			alert('Please, enter your search movie name!')
@@ -25,18 +27,23 @@ const Movies = () => {
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 
-			results.length === 0 ? alert('Тo results for your search :(') : setMovies(results)
+			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
 		})
+		console.log(submitted)
 	};
 
 	useEffect(() => {
-		if (!searchQuery) return
+		console.log(submitted)
+		if (!submitted.current) {
+			return
+		}
 
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 			setMovies(results)
 		})
-	}, [searchQuery])
+
+	}, [submitted, searchQuery])
 
 	return (
 		<Wrapper>
