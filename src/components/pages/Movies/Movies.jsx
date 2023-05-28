@@ -10,6 +10,7 @@ const Movies = () => {
 	const location = useLocation()
 	const searchQuery = searchParams.get('query')
 
+
 	const handleChange = ({ target: { value } }) => {
 		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] });
 	}
@@ -26,7 +27,7 @@ const Movies = () => {
 			const { data: { results } } = response
 
 			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
-
+			console.log('фетч при сабмите')
 		})
 
 	};
@@ -39,7 +40,15 @@ const Movies = () => {
 			results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
 			console.log('first')
 		})
-	}, [])
+	}, [searchQuery])
+
+		//  const fetch = () => { return fetchMovieByQuery(searchQuery).then(response => {
+		// 	const { data: { results } } = response
+		// 	results.length !== 0 ? setMovies(results) : alert('No results for your search :(')
+		// 	console.log("фетч без сабмита")
+		// })}
+
+	
 
 	return (
 		<Wrapper>
