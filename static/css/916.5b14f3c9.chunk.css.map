@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/916.5b14f3c9.chunk.css","mappings":"AAAA,uBACE,YAIF","sources":["components/pages/Movies/Movies.module.css"],"sourcesContent":[".Wrapper {\n  padding: 20px;\n\n\t/* height: 100vh;\n\twidth: 100vw; */\n}"],"names":[],"sourceRoot":""}
