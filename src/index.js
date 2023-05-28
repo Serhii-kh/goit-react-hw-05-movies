@@ -12,4 +12,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   </React.StrictMode>
 );
 
-//  basename = '/Serhii-kh/goit-react-hw-05-movies';
+//  basename = '/goit-react-hw-05-movies';
