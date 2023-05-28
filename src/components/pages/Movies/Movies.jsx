@@ -11,8 +11,6 @@ const Movies = () => {
 	const searchQuery = searchParams.get('query')
 
 	const handleChange = ({ target: { value } }) => {
-		// setSearchParams({ query: [value] })
-
 		value === "" ? setSearchParams({}) : setSearchParams({ query: [value] })
 	}
 
