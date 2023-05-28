@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from '../MovieDetails/MovieDetails.module.css';
 
-export const MovieDetails = () => {
+ const MovieDetails = () => {
 	const [movie, setMovie] = useState(null);
 	const { movieId } = useParams();
 
@@ -56,3 +56,6 @@ export const MovieDetails = () => {
 		)
 	);
 };
+
+
+export default MovieDetails;

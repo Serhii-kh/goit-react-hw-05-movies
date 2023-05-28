@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { fetchTrandingMovies } from "components/Api/fetchMovies";
 import PropTypes from 'prop-types';
 
-export const Home = () => {
+const Home = () => {
 	const [movies, setMovies] = useState([])
 	const location = useLocation()
 
@@ -36,4 +36,4 @@ Home.propTypes = {
 }
 
 
-	// < Link to = {`${id}`}>
+export default Home;

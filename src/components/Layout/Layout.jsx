@@ -1,14 +1,19 @@
 import { Navigation } from "components/Navigation/Navigation"
 import { Wrapper } from "components/Wrapper/Wrapper"
+import { Suspense } from "react"
 import { Outlet } from "react-router-dom"
 
-export const Layout = () => {
+const Layout = () => {
 	return (
 		<>
 			<Wrapper>
 				<Navigation />
-				<Outlet />
+				<Suspense fallback={<div>Loading...</div>}>
+					<Outlet />
+				</Suspense>
 			</Wrapper>
 		</>
 	)
 }
+
+export default Layout;

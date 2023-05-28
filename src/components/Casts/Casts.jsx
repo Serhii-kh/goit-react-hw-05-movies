@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import css from '../Casts/Casts.module.css'
 
-export const Casts = () => {
+const Casts = () => {
 	const [casts, setCasts] = useState([])
 	const { movieId } = useParams()
 
@@ -11,8 +11,6 @@ export const Casts = () => {
 		fetchCasts(movieId).then(({ data }) => setCasts(data.cast))
 
 	}, [movieId])
-
-	// console.log(casts)
 
 	return (
 		<>
@@ -35,5 +33,6 @@ export const Casts = () => {
 			</div>}
 		</>
 	)
-
 }
+
+export default Casts;

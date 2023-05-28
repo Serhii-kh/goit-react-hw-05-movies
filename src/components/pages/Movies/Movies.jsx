@@ -4,7 +4,7 @@ import { fetchMovieByQuery } from "components/Api/fetchMovies";
 import { Wrapper } from "components/Wrapper/Wrapper";
 import css from '../Movies/Movies.module.css'
 
-export const Movies = () => {
+const Movies = () => {
 	const [movies, setMovies] = useState([])
 	const [searchParams, setSearchParams] = useSearchParams()
 	const location = useLocation()
@@ -73,3 +73,5 @@ export const Movies = () => {
 	);
 }
 
+
+export default Movies;
