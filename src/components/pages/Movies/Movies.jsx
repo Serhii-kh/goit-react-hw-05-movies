@@ -30,12 +30,14 @@ const Movies = () => {
 	};
 
 	useEffect(() => {
-if(searchQuery === '' || !searchQuery)
+		if (searchQuery === '' || !searchQuery) return
 
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
 			setMovies(results)
-		}, [])
+		}, [searchQuery])
+
+		console.log('adadadd')
 	})
 
 	return (
