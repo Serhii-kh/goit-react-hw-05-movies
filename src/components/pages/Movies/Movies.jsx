@@ -26,20 +26,19 @@ const Movies = () => {
 
 		fetchMovieByQuery(searchQuery).then(response => {
 			const { data: { results } } = response
-			setMovies(results)
 
-			if (results.length === 0) alert('Тo results for your search :(')
+			results.length === 0 ? alert('Тo results for your search :(') : setMovies(results)
 		})
 	};
 
-	// useEffect(() => {
-	// 	if (!searchQuery) return
+	useEffect(() => {
+		if (!searchQuery) return
 
-	// 	fetchMovieByQuery(searchQuery).then(response => {
-	// 		const { data: { results } } = response
-	// 		setMovies(results)
-	// 	})
-	// }, [searchQuery])
+		fetchMovieByQuery(searchQuery).then(response => {
+			const { data: { results } } = response
+			setMovies(results)
+		})
+	}, [])
 
 	return (
 		<Wrapper>
@@ -68,7 +67,6 @@ const Movies = () => {
 				)
 				}
 			</ul>}
-
 		</Wrapper>
 	);
 }
